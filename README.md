@@ -43,7 +43,7 @@ class Person {
     age int
     
     // Constructor
-    constructor(n string, a int) {
+    Person(n string, a int) {
         this.name = n
         this.age = a
     }
@@ -63,7 +63,7 @@ class Person {
 class Student extends Person {
     studentId string
     
-    constructor(n string, a int, id string) {
+    Student(n string, a int, id string) {
         super(n, a)
         this.studentId = id
     }
@@ -217,7 +217,7 @@ class Person {
     name string
     age int
     
-    constructor(n string, a int) {
+    Person(n string, a int) {
         this.name = n
         this.age = a
     }
@@ -251,7 +251,7 @@ func (this *Person) greet() {
 class Student extends Person {
     studentId string
     
-    constructor(n string, a int, id string) {
+    Student(n string, a int, id string) {
         super(n, a)
         this.studentId = id
     }
@@ -366,7 +366,7 @@ class Person {
     name string
     age int
     
-    constructor(n string, a int) {
+    Person(n string, a int) {
         this.name = "Unknown"
         this.age = 0
         
@@ -405,7 +405,7 @@ class Student extends Person {
     studentId string
     grade float64
     
-    constructor(n string, a int, id string) {
+    Student(n string, a int, id string) {
         super(n, a)
         this.studentId = id
         this.grade = 0.0
