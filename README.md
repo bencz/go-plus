@@ -348,6 +348,14 @@ python3 goe2go.py init example --module github.com/user/example
 cd example
 ```
 
+#### Compiling the Provided Example Project
+
+To build the included example project, run:
+
+```bash
+python3 goe2go.py build -d example_project -v
+```
+
 #### src/models/person.gox
 ```go
 package models
@@ -501,6 +509,17 @@ python3 goe2go.py transpile examples/example1.gox -o output.go
 - Verbose mode for debugging
 - Automatic `go.mod` generation
 
+## Future Extensions
+
+- [ ] Access modifiers (private, protected, public)
+- [ ] Static methods
+- [ ] Interfaces as types
+- [ ] Basic generics
+- [ ] Better error handling with stack traces
+- [ ] Generated code optimizations
+- [ ] Support for more Go types (channels, goroutines, etc)
+- [ ] Plugin system for custom extensions
+
 ## Project Files
 
 ```
@@ -545,5 +564,3 @@ goe2go/
 ## License
 
 This project is open source. Feel free to use, modify and distribute.
-
-
