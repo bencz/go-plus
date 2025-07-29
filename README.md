@@ -1,5 +1,7 @@
 # Go-Plus Transpiler
 
+**ATTENTION: THIS IS AN EXPERIMENTAL PROJECT!**
+
 A complete transpiler that extends Go with object-oriented features like classes, inheritance, and exception handling, then converts the extended syntax back to idiomatic standard Go code.
 
 ## Key Features:
