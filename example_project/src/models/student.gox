@@ -1,0 +1,37 @@
+package models
+
+import "fmt"
+
+class Student extends Person {
+    school string = "Unknown School"
+    grade float64 = 0.0
+    
+    Student(n string, a int, s string) {
+        super.Person(n, a)
+        this.school = s
+    }
+    
+    func GetSchool() string {
+        return this.school
+    }
+    
+    func SetGrade(g float64) {
+        if g < 0.0 || g > 10.0 {
+            throw NewException("InvalidGrade", "Grade must be between 0 and 10")
+        }
+        this.grade = g
+    }
+    
+    func GetGrade() float64 {
+        return this.grade
+    }
+    
+    func Study() {
+        fmt.Printf("%s is studying at %s\n", this.name, this.school)
+    }
+    
+    func GetInfo() string {
+        return fmt.Sprintf("%s (%d years old) - Student at %s (Grade: %.1f)", 
+                          this.name, this.age, this.school, this.grade)
+    }
+}

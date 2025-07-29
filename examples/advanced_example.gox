@@ -1,0 +1,97 @@
+package main
+
+import "fmt"
+
+// Classe base para veículos
+class Vehicle {
+    brand string = "Unknown"
+    year int = 0
+    
+    Vehicle(b string, y int) {
+        this.brand = b
+        this.year = y
+    }
+    
+    func GetInfo() string {
+        return fmt.Sprintf("%s (%d)", this.brand, this.year)
+    }
+    
+    func Start() {
+        fmt.Printf("Starting %s...\n", this.brand)
+    }
+}
+
+// Classe Car herda de Vehicle
+class Car extends Vehicle {
+    doors int = 4
+    fuel float64 = 0.0
+    
+    Car(b string, y int, d int) {
+        super.Vehicle(b, y)
+        this.doors = d
+    }
+    
+    func Refuel(amount float64) {
+        if amount < 0 {
+            throw NewException("InvalidAmount", "Fuel amount cannot be negative")
+        }
+        if amount > 100 {
+            throw NewException("TankOverflow", "Tank capacity exceeded")
+        }
+        this.fuel = this.fuel + amount
+        fmt.Printf("Refueled %s with %.2f liters\n", this.brand, amount)
+    }
+    
+    func Drive(distance float64) {
+        consumption := distance * 0.1
+        if this.fuel < consumption {
+            throw NewException("InsufficientFuel", "Not enough fuel to drive")
+        }
+        this.fuel = this.fuel - consumption
+        fmt.Printf("Drove %s for %.2f km. Fuel remaining: %.2f\n", 
+                   this.brand, distance, this.fuel)
+    }
+    
+    func GetFuelLevel() float64 {
+        return this.fuel
+    }
+}
+
+func testVehicles() {
+    try {
+        // Criar um carro
+        car := new Car("Toyota", 2020, 4)
+        car.Start()
+        
+        // Abastecer
+        car.Refuel(50.0)
+        
+        // Dirigir
+        car.Drive(100.0)
+        car.Drive(200.0)
+        
+        // Tentar abastecer demais
+        car.Refuel(80.0)
+        
+    } catch (TankOverflow e) {
+        fmt.Printf("Tank error: %s\n", e.Error())
+        
+    } catch (InsufficientFuel e) {
+        fmt.Printf("Fuel error: %s\n", e.Error())
+        
+    } catch (InvalidAmount e) {
+        fmt.Printf("Amount error: %s\n", e.Error())
+        
+    } catch (Exception e) {
+        fmt.Printf("General error: %s\n", e.Error())
+        
+    } finally {
+        fmt.Println("Vehicle test completed")
+    }
+}
+
+func main() {
+    fmt.Println("=== Advanced Go-Extended Example ===")
+    testVehicles()
+    fmt.Println("Program finished successfully!")
+}

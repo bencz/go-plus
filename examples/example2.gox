@@ -1,0 +1,51 @@
+package main
+
+import "fmt"
+
+class Calculator {
+    result float64 = 0.0
+    
+    func Add(a float64, b float64) float64 {
+        this.result = a + b
+        return this.result
+    }
+    
+    func Divide(a float64, b float64) float64 {
+        if b == 0.0 {
+            throw NewException("DivisionByZero", "Cannot divide by zero")
+        }
+        this.result = a / b
+        return this.result
+    }
+    
+    func GetResult() float64 {
+        return this.result
+    }
+}
+
+func testCalculator() {
+    calc := new Calculator()
+    
+    try {
+        result1 := calc.Add(10.0, 5.0)
+        fmt.Printf("10 + 5 = %.2f\n", result1)
+        
+        result2 := calc.Divide(20.0, 4.0)
+        fmt.Printf("20 / 4 = %.2f\n", result2)
+        
+        // Isso vai gerar uma exceção
+        result3 := calc.Divide(10.0, 0.0)
+        fmt.Printf("10 / 0 = %.2f\n", result3)
+        
+    } catch (DivisionByZero e) {
+        fmt.Printf("Math error: %s\n", e.Error())
+    } catch (Exception e) {
+        fmt.Printf("General error: %s\n", e.Error())
+    } finally {
+        fmt.Printf("Final result: %.2f\n", calc.GetResult())
+    }
+}
+
+func main() {
+    testCalculator()
+}

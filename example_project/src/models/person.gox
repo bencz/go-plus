@@ -1,0 +1,39 @@
+package models
+
+import "fmt"
+
+class Person {
+    name string = "Unknown"
+    age int = 0
+    
+    Person(n string, a int) {
+        if a < 0 {
+            throw NewException("InvalidAge", "Age cannot be negative")
+        }
+        this.name = n
+        this.age = a
+    }
+    
+    func GetName() string {
+        return this.name
+    }
+    
+    func GetAge() int {
+        return this.age
+    }
+    
+    func SetAge(newAge int) {
+        if newAge < 0 {
+            throw NewException("InvalidAge", "Age cannot be negative")
+        }
+        this.age = newAge
+    }
+    
+    func Greet() {
+        fmt.Printf("Hello, I'm %s and I'm %d years old\n", this.name, this.age)
+    }
+    
+    func GetInfo() string {
+        return fmt.Sprintf("%s (%d years old)", this.name, this.age)
+    }
+}

@@ -1,0 +1,64 @@
+package main
+
+import "fmt"
+
+class Person {
+    name string = "Unknown"
+    age int = 0
+    
+    Person(n string, a int) {
+        this.name = n
+        this.age = a
+    }
+    
+    func GetName() string {
+        return this.name
+    }
+    
+    func SetAge(newAge int) {
+        if newAge < 0 {
+            throw NewException("InvalidAge", "Age cannot be negative")
+        }
+        this.age = newAge
+    }
+    
+    func Greet() {
+        fmt.Printf("Hello, I'm %s and I'm %d years old\n", this.name, this.age)
+    }
+}
+
+class Student extends Person {
+    school string = "Unknown School"
+    
+    Student(n string, a int, s string) {
+        super.Person(n, a)
+        this.school = s
+    }
+    
+    func GetSchool() string {
+        return this.school
+    }
+    
+    func Study() {
+        fmt.Printf("%s is studying at %s\n", this.name, this.school)
+    }
+}
+
+func main() {
+    try {
+        person := new Person("Alice", 25)
+        person.Greet()
+        
+        student := new Student("Bob", 20, "MIT")
+        student.Greet()
+        student.Study()
+        
+        // Teste de exceção
+        person.SetAge(-5)
+        
+    } catch (Exception e) {
+        fmt.Printf("Caught exception: %s - %s\n", e.Type(), e.Error())
+    } finally {
+        fmt.Println("Cleanup completed")
+    }
+}

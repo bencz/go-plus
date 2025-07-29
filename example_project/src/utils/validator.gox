@@ -1,0 +1,35 @@
+package utils
+
+import "strings"
+
+class Validator {
+    func ValidateName(name string) bool {
+        if len(name) == 0 {
+            throw NewException("EmptyName", "Name cannot be empty")
+        }
+        if len(name) < 2 {
+            throw NewException("ShortName", "Name must have at least 2 characters")
+        }
+        return true
+    }
+    
+    func ValidateEmail(email string) bool {
+        if !strings.Contains(email, "@") {
+            throw NewException("InvalidEmail", "Email must contain @ symbol")
+        }
+        if !strings.Contains(email, ".") {
+            throw NewException("InvalidEmail", "Email must contain a domain")
+        }
+        return true
+    }
+    
+    func ValidateAge(age int) bool {
+        if age < 0 {
+            throw NewException("InvalidAge", "Age cannot be negative")
+        }
+        if age > 150 {
+            throw NewException("InvalidAge", "Age cannot be greater than 150")
+        }
+        return true
+    }
+}

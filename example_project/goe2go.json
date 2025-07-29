@@ -1,0 +1,8 @@
+{
+  "name": "example_project",
+  "version": "1.0.0",
+  "main_package": "main",
+  "source_dir": "src",
+  "output_dir": "build",
+  "go_mod_name": "github.com/user/example_project"
+}

@@ -1,0 +1,78 @@
+package main
+
+import "fmt"
+import "models"
+import "utils"
+
+func createPerson(name string, age int) {
+    try {
+        validator := new Validator()
+        validator.ValidateName(name)
+        validator.ValidateAge(age)
+        
+        person := new Person(name, age)
+        person.Greet()
+        
+    } catch (EmptyName e) {
+        fmt.Printf("Name error: %s\n", e.Error())
+    } catch (ShortName e) {
+        fmt.Printf("Name error: %s\n", e.Error())
+    } catch (InvalidAge e) {
+        fmt.Printf("Age error: %s\n", e.Error())
+    } catch (Exception e) {
+        fmt.Printf("General error: %s\n", e.Error())
+    }
+}
+
+func createStudent(name string, age int, school string) {
+    try {
+        validator := new Validator()
+        validator.ValidateName(name)
+        validator.ValidateAge(age)
+        
+        student := new Student(name, age, school)
+        student.SetGrade(8.5)
+        student.Study()
+        fmt.Println("Student info:", student.GetInfo())
+        
+    } catch (InvalidGrade e) {
+        fmt.Printf("Grade error: %s\n", e.Error())
+    } catch (Exception e) {
+        fmt.Printf("Error creating student: %s\n", e.Error())
+    }
+}
+
+func main() {
+    fmt.Println("=== Go-Extended Multi-File Project Demo ===")
+    
+    // Testa criação de pessoas
+    fmt.Println("\n--- Testing Person Creation ---")
+    createPerson("Alice", 25)
+    createPerson("Bob", 30)
+    createPerson("", 20)  // Erro: nome vazio
+    createPerson("A", 25) // Erro: nome muito curto
+    createPerson("Charlie", -5) // Erro: idade inválida
+    
+    // Testa criação de estudantes
+    fmt.Println("\n--- Testing Student Creation ---")
+    createStudent("Diana", 20, "MIT")
+    createStudent("Eve", 22, "Stanford")
+    
+    fmt.Println("\n--- Direct Object Creation ---")
+    try {
+        person := new Person("Frank", 35)
+        student := new Student("Grace", 19, "Harvard")
+        
+        fmt.Println("Person:", person.GetInfo())
+        fmt.Println("Student:", student.GetInfo())
+        
+        // Testa mudança de nota
+        student.SetGrade(9.2)
+        fmt.Println("Updated student:", student.GetInfo())
+        
+    } catch (Exception e) {
+        fmt.Printf("Error in direct creation: %s\n", e.Error())
+    } finally {
+        fmt.Println("\nDemo completed successfully!")
+    }
+}
