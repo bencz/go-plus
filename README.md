@@ -1,4 +1,4 @@
-# Go-Extended Transpiler
+# Go-Plus Transpiler
 
 A complete transpiler that extends Go with object-oriented features like classes, inheritance, and exception handling, then converts the extended syntax back to idiomatic standard Go code.
 
@@ -32,7 +32,7 @@ Perfect for developers who want OOP features in Go while maintaining compatibili
 - Multiple `catch` blocks with specific types
 - Exception system based on interfaces
 
-### Go-Extended Syntax
+### Go-Plus Syntax
 
 #### Classes
 ```go
@@ -125,12 +125,12 @@ python3 goe2go.py transpile examples/example1.gox -o output.go -v
 
 ### Project Structure
 
-A Go-Extended project has the following structure:
+A Go-Plus project has the following structure:
 
 ```
 my_project/
 ├── goe2go.json          # Project configuration
-├── src/                 # Go-Extended source code
+├── src/                 # Go-Plus source code
 │   ├── main/
 │   │   └── main.gox
 │   ├── models/
@@ -210,7 +210,7 @@ python3 demo.py
 
 #### Classes to Structs
 ```go
-// Go-Extended
+// Go-Plus
 class Person {
     name string
     age int
@@ -245,7 +245,7 @@ func (this *Person) greet() {
 
 #### Inheritance to Embedding
 ```go
-// Go-Extended
+// Go-Plus
 class Student extends Person {
     studentId string
     
@@ -271,7 +271,7 @@ func NewStudent(n string, a int, id string) *Student {
 
 #### Exceptions to Defer/Recover
 ```go
-// Go-Extended
+// Go-Plus
 try {
     riskyOperation()
 } catch (Exception e) {
