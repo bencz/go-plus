@@ -522,7 +522,6 @@ goe2go/
 ├── transpiler.py          # Go code generator
 ├── project_manager.py     # Project manager
 ├── test_transpiler.py     # Automated tests
-├── demo.py                # Demonstration
 ├── README.md              # Documentation
 ├── requirements.txt       # Python dependencies
 ├── examples/              # Single file examples
