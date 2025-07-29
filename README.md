@@ -509,17 +509,6 @@ python3 goe2go.py transpile examples/example1.gox -o output.go
 - Verbose mode for debugging
 - Automatic `go.mod` generation
 
-## Future Extensions
-
-- [ ] Access modifiers (private, protected, public)
-- [ ] Static methods
-- [ ] Interfaces as types
-- [ ] Basic generics
-- [ ] Better error handling with stack traces
-- [ ] Generated code optimizations
-- [ ] Support for more Go types (channels, goroutines, etc)
-- [ ] Plugin system for custom extensions
-
 ## Project Files
 
 ```
